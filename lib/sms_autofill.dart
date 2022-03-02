@@ -46,6 +46,7 @@ class SmsAutoFill {
 }
 
 class PinFieldAutoFill extends StatefulWidget {
+  final Color? cursorColor;
   final int codeLength;
   final bool autoFocus;
   final TextEditingController? controller;
@@ -63,6 +64,7 @@ class PinFieldAutoFill extends StatefulWidget {
 
   const PinFieldAutoFill(
       {Key? key,
+      this.cursorColor,
       this.keyboardType = const TextInputType.numberWithOptions(),
       this.textInputAction = TextInputAction.done,
       this.focusNode,
@@ -171,6 +173,7 @@ class PhoneFormFieldHint extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final FormFieldValidator? validator;
   final InputDecoration? decoration;
+  final Color? cursorColor;
   final TextField? child;
 
   const PhoneFormFieldHint({
@@ -181,6 +184,7 @@ class PhoneFormFieldHint extends StatelessWidget {
     this.validator,
     this.decoration,
     this.autoFocus = false,
+    this.cursorColor,
     this.focusNode,
   }) : super(key: key);
 
@@ -195,6 +199,7 @@ class PhoneFormFieldHint extends StatelessWidget {
         decoration: decoration,
         autoFocus: autoFocus,
         focusNode: focusNode,
+        cursorColor: cursorColor,
         isFormWidget: true);
   }
 }
@@ -206,9 +211,11 @@ class PhoneFieldHint extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final InputDecoration? decoration;
   final TextField? child;
+  final Color? cursorColor;
 
   const PhoneFieldHint({
     Key? key,
+    this.cursorColor,
     this.child,
     this.controller,
     this.inputFormatters,
@@ -221,6 +228,7 @@ class PhoneFieldHint extends StatelessWidget {
   Widget build(BuildContext context) {
     return _PhoneFieldHint(
         key: key,
+        cursorColor: cursorColor,
         child: child,
         inputFormatters: inputFormatters,
         controller: controller,
@@ -232,6 +240,7 @@ class PhoneFieldHint extends StatelessWidget {
 }
 
 class _PhoneFieldHint extends StatefulWidget {
+  final Color? cursorColor;
   final bool autoFocus;
   final FocusNode? focusNode;
   final TextEditingController? controller;
@@ -243,6 +252,7 @@ class _PhoneFieldHint extends StatefulWidget {
 
   const _PhoneFieldHint({
     Key? key,
+    this.cursorColor,
     this.child,
     this.controller,
     this.inputFormatters,
@@ -321,6 +331,7 @@ class _PhoneFieldHintState extends State<_PhoneFieldHint> {
 
   Widget _createTextField(InputDecoration decoration) {
     return TextField(
+      cursorColor: widget.cursorColor,
       autofocus: widget.autoFocus,
       focusNode: _focusNode,
       autofillHints: [AutofillHints.telephoneNumber],
