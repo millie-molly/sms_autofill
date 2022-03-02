@@ -372,6 +372,7 @@ class _PhoneFieldHintState extends State<_PhoneFieldHint> {
 }
 
 class TextFieldPinAutoFill extends StatefulWidget {
+  final Color? cursorColor;
   final int codeLength;
   final bool autoFocus;
   final FocusNode? focusNode;
@@ -388,6 +389,7 @@ class TextFieldPinAutoFill extends StatefulWidget {
   const TextFieldPinAutoFill(
       {Key? key,
       this.focusNode,
+      this.cursorColor,
       this.obscureText = false,
       this.onCodeSubmitted,
       this.style,
